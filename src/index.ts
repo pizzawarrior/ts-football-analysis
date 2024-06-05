@@ -1,24 +1,19 @@
-import fs, { readFileSync } from 'fs';
+import { CsvFileReader } from "./CsvFileReader";
 
-const matches = fs
-.readFileSync('football.csv', {
-    encoding: "utf-8"
-})
-    .trim()
-    .split('\n')
-    .map((row: string): string[] => {
-        return row.split(',')
-    })
+const reader = new CsvFileReader('football.csv')
+reader.read()
+
+enum gameResult {
+    HomeTeamWon = 'H',
+    AwayTeamWon = 'A',
+    Draw = 'D'
+}
 
 // test analyze data:
-const manUnitedWins = (games: string[][]) => {
     let totalWins: number = 0;
-    for (let game of games) {
-        if (game[1] === 'Man United' && game[5] === 'H' || game[2] === 'Man United' && game[5] === 'A') {
+    for (let game of reader.data) {
+        if (game[1] === 'Man United' && game[5] === gameResult.HomeTeamWon || game[2] === 'Man United' && game[5] === gameResult.AwayTeamWon) {
             totalWins++;
         }
     }
-    return totalWins;
-}
-
-console.log(manUnitedWins(matches))
+    console.log(`Manchester United has ${totalWins} wins for this season`)
