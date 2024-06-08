@@ -1,14 +1,11 @@
 import fs, { readFileSync } from 'fs';
-import { MatchResult } from './MatchResult';
 
-type RowTuple = [Date, string, string, number, number, MatchResult, string]
-
-export abstract class CsvFileReader {
-    data: RowTuple[] = [];
+export abstract class CsvFileReader<CsvFile> {
+    data: CsvFile[] = [];
 
     constructor(public filename: string) {}
 
-    abstract formatSingleRow(row: string[]): RowTuple
+    abstract formatSingleRow(row: string[]): CsvFile
 
     read(): void {
         this.data = fs
