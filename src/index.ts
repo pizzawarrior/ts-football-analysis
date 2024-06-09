@@ -1,7 +1,7 @@
-import { CsvFileReader } from "./CsvFileReader";
 import { MatchResult } from "./MatchResult";
+import { MatchReader } from "./MatchReader";
 
-const reader = new CsvFileReader('football.csv')
+const reader = new MatchReader('football.csv')
 reader.read()
 
 //  test analyze data:
@@ -11,4 +11,4 @@ reader.read()
             totalWins++;
         }
     }
-    // console.log(`Manchester United has ${totalWins} wins for this season`)
+    console.log(`Manchester United has ${totalWins} wins for this season`)

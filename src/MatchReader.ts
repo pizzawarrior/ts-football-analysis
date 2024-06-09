@@ -4,7 +4,7 @@ import { CsvFileReader } from "./CsvFileReader"
 
 type RowTuple = [Date, string, string, number, number, MatchResult, string]
 
-export class MatchReader extends CsvFileReader {
+export class MatchReader extends CsvFileReader<RowTuple> {
     formatSingleRow(row: string[]): RowTuple {
         return [
             dateStringtoDate(row[0]),

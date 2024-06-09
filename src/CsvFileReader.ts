@@ -1,11 +1,12 @@
 import fs, { readFileSync } from 'fs';
 
-export abstract class CsvFileReader<CsvFile> {
-    data: CsvFile[] = [];
+// accepts a generic type do we can use different data types. Convention is single letter name.
+export abstract class CsvFileReader<T> {
+    data: T[] = [];
 
     constructor(public filename: string) {}
 
-    abstract formatSingleRow(row: string[]): CsvFile
+    abstract formatSingleRow(row: string[]): T;
 
     read(): void {
         this.data = fs
@@ -17,6 +18,6 @@ export abstract class CsvFileReader<CsvFile> {
             .map((row: string): string[] => {
                 return row.split(',')
             })
-            // .map(this.formatSingleRow)
+            .map(this.formatSingleRow)
     }
 }
