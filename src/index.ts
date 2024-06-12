@@ -16,11 +16,8 @@ const newMatch = new MatchReader(csvFileReader);
 newMatch.load();
 
 // create instances of all classes and pass in required objects
-const winsAnalysis = new WinsAnalysis()
-const averageGoalsAnalysis = new AverageGoalsAnalysis()
-const consoleReport = new ConsoleReport()
-const generateWinsSummary = new GenerateSummary(winsAnalysis, consoleReport)
-const generateAverageScorePerGameSummary = new GenerateSummary(averageGoalsAnalysis, consoleReport)
+const generateWinsSummary = new GenerateSummary(new WinsAnalysis(), new ConsoleReport())
+const generateAverageScorePerGameSummary = new GenerateSummary(new AverageGoalsAnalysis(), new ConsoleReport())
 
 generateWinsSummary.buildAndPrintReport(newMatch.matches)
 generateAverageScorePerGameSummary.buildAndPrintReport(newMatch.matches)

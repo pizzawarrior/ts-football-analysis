@@ -1,19 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const MatchResult_1 = require("./MatchResult");
 const MatchReader_1 = require("./MatchReader");
 const CsvFileReader_1 = require("./CsvFileReader");
+const WinsAnalysis_1 = require("./analyzers/WinsAnalysis");
+const AverageGoalsAnalysis_1 = require("./analyzers/AverageGoalsAnalysis");
+const ConsoleReport_1 = require("./reportTargets/ConsoleReport");
+const GenerateSummary_1 = require("./GenerateSummary");
 let csvFileName = 'football.csv';
 // create an object that satisfies the DataReader interface
 const csvFileReader = new CsvFileReader_1.CsvFileReader(csvFileName);
 // create an instance of MatchReader and pass in the object that satisfies the DataReader interface
 const newMatch = new MatchReader_1.MatchReader(csvFileReader);
 newMatch.load();
-//  test analyze data:
-let totalWins = 0;
-for (let game of newMatch.matches) {
-    if (game[1] === 'Man United' && game[5] === MatchResult_1.MatchResult.HomeTeamWon || game[2] === 'Man United' && game[5] === MatchResult_1.MatchResult.AwayTeamWon) {
-        totalWins++;
-    }
-}
-console.log(`Manchester United has ${totalWins} wins for the season`);
+// create instances of all classes and pass in required objects
+const generateWinsSummary = new GenerateSummary_1.GenerateSummary(new WinsAnalysis_1.WinsAnalysis(), new ConsoleReport_1.ConsoleReport());
+const generateAverageScorePerGameSummary = new GenerateSummary_1.GenerateSummary(new AverageGoalsAnalysis_1.AverageGoalsAnalysis(), new ConsoleReport_1.ConsoleReport());
+generateWinsSummary.buildAndPrintReport(newMatch.matches);
+generateAverageScorePerGameSummary.buildAndPrintReport(newMatch.matches);

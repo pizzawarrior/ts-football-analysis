@@ -6,7 +6,6 @@ export class AverageGoalsAnalysis implements Analyzer {
     constructor(public teamName: string = 'Man United') {}
 
     run(matches: FormatDataRow[]): string {
-
         let totalPointsScored = 0;
         let totalGamesPlayed = 0
         for (let game of matches) {
