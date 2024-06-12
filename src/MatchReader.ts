@@ -1,7 +1,6 @@
 import { MatchResult } from "./MatchResult";
 import { dateStringtoDate } from "./utils";
-
-type FormatDataRow = [Date, string, string, number, number, MatchResult, string]
+import { FormatDataRow } from "./FormatDataRow";
 
 interface DataReader {
  read(): void;
