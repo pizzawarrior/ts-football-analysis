@@ -16,4 +16,4 @@ for (let game of newMatch.matches) {
         totalWins++;
     }
 }
-console.log(`Manchester United has ${totalWins} wins for this season`);
+console.log(`Manchester United has ${totalWins} wins for the season`);
