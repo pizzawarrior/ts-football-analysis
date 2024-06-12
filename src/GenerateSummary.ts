@@ -10,4 +10,9 @@ export interface OutputTarget {
 
 export class GenerateSummary {
     constructor(public analyzer: Analyzer, public outputTarget: OutputTarget) {}
+
+    buildAndPrintReport(matches: FormatDataRow[]): void {
+        const report = this.analyzer.run(matches);
+        this.outputTarget.print(report)
+    }
 }
