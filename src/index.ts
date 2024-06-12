@@ -3,6 +3,7 @@ import { CsvFileReader } from "./CsvFileReader";
 import { WinsAnalysis } from "./analyzers/WinsAnalysis";
 import { AverageGoalsAnalysis } from "./analyzers/AverageGoalsAnalysis";
 import { ConsoleReport } from "./reportTargets/ConsoleReport";
+import { HtmlReport } from "./reportTargets/HtmlReport";
 import { GenerateSummary } from "./GenerateSummary";
 
 
@@ -16,8 +17,12 @@ const newMatch = new MatchReader(csvFileReader);
 newMatch.load();
 
 // create instances of all classes and pass in required objects
-const generateWinsSummary = new GenerateSummary(new WinsAnalysis(), new ConsoleReport())
-const generateAverageScorePerGameSummary = new GenerateSummary(new AverageGoalsAnalysis(), new ConsoleReport())
+const consoleLogWinsSummary = new GenerateSummary(new WinsAnalysis(), new ConsoleReport())
+const consoleLogAverageScorePerGameSummary = new GenerateSummary(new AverageGoalsAnalysis(), new ConsoleReport())
 
-generateWinsSummary.buildAndPrintReport(newMatch.matches)
-generateAverageScorePerGameSummary.buildAndPrintReport(newMatch.matches)
+consoleLogWinsSummary.buildAndPrintReport(newMatch.matches)
+consoleLogAverageScorePerGameSummary.buildAndPrintReport(newMatch.matches)
+
+// generate html wins report
+const generateHtmlWinsSummary = new GenerateSummary(new WinsAnalysis, new HtmlReport('Wins_Summary.html'))
+generateHtmlWinsSummary.buildAndPrintReport(newMatch.matches)
