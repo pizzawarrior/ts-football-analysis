@@ -5,6 +5,7 @@ const ConsoleReport_1 = require("./reportTargets/ConsoleReport");
 const HtmlReport_1 = require("./reportTargets/HtmlReport");
 const WinsAnalysis_1 = require("./analyzers/WinsAnalysis");
 const AverageGoalsAnalysis_1 = require("./analyzers/AverageGoalsAnalysis");
+// using static methods will create the instance for each class
 class GenerateSummary {
     constructor(analyzer, outputTarget) {
         this.analyzer = analyzer;

@@ -12,6 +12,7 @@ export interface OutputTarget {
     print(report: string): void;
 }
 
+// using static methods will create the instance for each class
 export class GenerateSummary {
     constructor(public analyzer: Analyzer, public outputTarget: OutputTarget) {}
 
