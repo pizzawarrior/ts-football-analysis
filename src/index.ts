@@ -1,9 +1,5 @@
 import { MatchReader } from "./MatchReader";
 import { CsvFileReader } from "./CsvFileReader";
-import { WinsAnalysis } from "./analyzers/WinsAnalysis";
-import { AverageGoalsAnalysis } from "./analyzers/AverageGoalsAnalysis";
-import { ConsoleReport } from "./reportTargets/ConsoleReport";
-import { HtmlReport } from "./reportTargets/HtmlReport";
 import { GenerateSummary } from "./GenerateSummary";
 
 
@@ -16,13 +12,12 @@ const csvFileReader = new CsvFileReader(csvFileName);
 const newMatch = new MatchReader(csvFileReader);
 newMatch.load();
 
-// create instances of all classes and pass in required objects
-const consoleLogWinsSummary = new GenerateSummary(new WinsAnalysis(), new ConsoleReport())
-const consoleLogAverageScorePerGameSummary = new GenerateSummary(new AverageGoalsAnalysis(), new ConsoleReport())
+// use static methods to run operations instead of having to create an instance of each class
+const logWinsSummary = GenerateSummary.consoleLogWinsSummary('Man United')
+logWinsSummary.buildAndPrintReport(newMatch.matches)
 
-consoleLogWinsSummary.buildAndPrintReport(newMatch.matches)
-consoleLogAverageScorePerGameSummary.buildAndPrintReport(newMatch.matches)
+const logAverageScorePerGameSummary = GenerateSummary.consoleLogAverageScorePerGameSummary('Man United')
+logAverageScorePerGameSummary.buildAndPrintReport(newMatch.matches)
 
-// generate html wins report
-const generateHtmlWinsSummary = new GenerateSummary(new WinsAnalysis, new HtmlReport('Wins_Summary.html'))
-generateHtmlWinsSummary.buildAndPrintReport(newMatch.matches)
+const htmlWinsSummary = GenerateSummary.generateHtmlWinsSummary('Wins_Analysis.html')
+htmlWinsSummary.buildAndPrintReport(newMatch.matches)
