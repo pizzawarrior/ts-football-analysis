@@ -19,9 +19,11 @@ export class GenerateSummary {
     static consoleLogWinsSummary(teamName: string): GenerateSummary {
         return new GenerateSummary(new WinsAnalysis(teamName), new ConsoleReport());
     }
+
     static consoleLogAverageScorePerGameSummary(teamName: string): GenerateSummary {
         return new GenerateSummary(new AverageGoalsAnalysis(teamName), new ConsoleReport())
     }
+
     static generateHtmlWinsSummary(teamName: string): GenerateSummary {
         return new GenerateSummary(new WinsAnalysis(teamName), new HtmlReport(teamName))
     }
