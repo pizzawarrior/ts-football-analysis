@@ -35,7 +35,7 @@ describe('Generate Summary', () => {
             [new Date(2024, 5, 28), 'Man United', 'Chelsea', 2, 1, MatchResult.HomeTeamWon, 'N Smith'],
             [new Date(2024, 5, 25), 'Chelsea', 'Man United', 1, 2, MatchResult.AwayTeamWon, 'T Jones'],
             [new Date(2024, 5, 30), 'Man United', 'Liverpool', 0, 0, MatchResult.Draw, 'M Taylor']
-        ]
+        ];
 
         const consoleSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
         const MockedGenerateSummary = GenerateSummary as jest.Mocked<typeof GenerateSummary>;

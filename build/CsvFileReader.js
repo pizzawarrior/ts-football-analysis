@@ -6,13 +6,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CsvFileReader = void 0;
 const fs_1 = __importDefault(require("fs"));
 class CsvFileReader {
-    constructor(filename) {
-        this.filename = filename;
+    constructor(fileName) {
+        this.fileName = fileName;
         this.data = [];
     }
     read() {
         this.data = fs_1.default
-            .readFileSync(this.filename, {
+            .readFileSync(this.fileName, {
             encoding: "utf-8"
         })
             .trim()

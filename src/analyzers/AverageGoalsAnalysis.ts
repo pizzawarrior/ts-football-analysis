@@ -15,13 +15,15 @@ export class AverageGoalsAnalysis implements Analyzer {
             } else if (game[2] === this.teamName && game[5] === MatchResult.AwayTeamWon) {
                 totalPointsScored += game[4];
                 totalGamesPlayed += 1;
+            } else if (game[1] === this.teamName && game[5] === MatchResult.Draw || game[2] === this.teamName && game[5] === MatchResult.Draw) {
+                totalGamesPlayed += 1;
             }
         }
         if (totalGamesPlayed === 0) {
             return `${this.teamName} did not play any games this season`;
         }
 
-        let averageScore = Math.round(totalPointsScored / totalGamesPlayed);
+        let averageScore = (totalPointsScored / totalGamesPlayed).toFixed(1);
         return `${this.teamName} averaged ${averageScore} points per game for this season`
     }
 }
