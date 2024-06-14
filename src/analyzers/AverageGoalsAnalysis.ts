@@ -23,7 +23,7 @@ export class AverageGoalsAnalysis implements Analyzer {
             return `${this.teamName} did not play any games this season`;
         }
 
-        let averageScore = (totalPointsScored / totalGamesPlayed).toFixed(1);
+        let averageScore = Math.round(totalPointsScored / totalGamesPlayed);
         return `${this.teamName} averaged ${averageScore} points per game for this season`
     }
 }
