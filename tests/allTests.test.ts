@@ -86,5 +86,32 @@ describe('Generate Summary', () => {
 
         expect(summary.buildAndPrintReport).toHaveBeenCalledWith(matches);
         consoleSpy.mockRestore();
-    })
+    });
+
+    it('generates and saves Html reports correctly', () => {
+        const matches: FormatDataRow[] = [
+            [new Date(2024, 5, 28), 'Man United', 'Chelsea', 2, 1, MatchResult.HomeTeamWon, 'N Smith'],
+        ];
+
+        const fsSpy = jest.spyOn(fs, 'writeFileSync').mockImplementation(() => {});
+        const MockedGenerateSummary = GenerateSummary as jest.Mocked<typeof GenerateSummary>;
+
+        const mockInstance = {
+            analyzer: new WinsAnalysis('Man United'),
+            outputTarget: new HtmlReport('report.html'),
+            buildAndPrintReport: jest.fn(() => {
+              const report = mockInstance.analyzer.run(matches);
+              mockInstance.outputTarget.print(report);
+            })
+          };
+
+        MockedGenerateSummary.generateHtmlWinsSummary.mockReturnValue(mockInstance);
+
+        const summary = GenerateSummary.generateHtmlWinsSummary('report.html');
+        summary.buildAndPrintReport(matches);
+
+        expect(summary.buildAndPrintReport).toHaveBeenCalledWith(matches);
+        expect(fsSpy).toHaveBeenCalledWith('/Users/ME/desktop/report.html', expect.any(String));
+        fsSpy.mockRestore();
+    });
 })
