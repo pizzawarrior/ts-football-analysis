@@ -14,6 +14,14 @@ describe('AverageGoalsAnalysis', () => {
         const averageGoalsAnalysis = new AverageGoalsAnalysis('Man United');
         const result = averageGoalsAnalysis.run(matches);
 
-        expect(result).toBe('Man United averaged 1.3 points per game for this season')
-    })
+        expect(result).toBe('Man United averaged 1.3 points per game for this season');
+    });
+
+    it('returns the correct response when no games with the given team name were recorded', () => {
+        const matches: FormatDataRow[] = [];
+        const averageGoalsAnalysis = new AverageGoalsAnalysis('Man United');
+        const result = averageGoalsAnalysis.run(matches);
+
+        expect(result).toBe('Man United did not play any games this season');
+    });
 })
