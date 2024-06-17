@@ -5,11 +5,11 @@ This project is aimed at extending OOP in Typescsript, using various conventiona
 We use Node for package management, and Jest for the testing suite.
 
 ## Running This Project
-Make sure you are in the root directory
-To run the project:
+Make sure you are in the root directory <br/>
+- To run the project:
 `npm start`
 
-To run tests:
+- To run tests:
 `npm t`
 
 - In the `index.ts` file you are able to specify the filename of the csv you would like to parse.
