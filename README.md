@@ -17,3 +17,6 @@ To run tests:
 - The `GenerateSummary` class takes an `Analyzer` and an `OutputTarget` interface as arguments. There are two options for each of these: For the `Analyzer` we can either select `WinsAnalysis`, which will calculate the total wins for the specified team for the season, or `AverageGoalsAnalysis`, which will return the average goals across all games played for the specified team for the season. For `OutputTarget`, we can either choose `ConsoleReport`, which will log the result of the selected Analyzer to the console, or `HtmlReport`, which will save the result as an HTML file to the desktop.
 
 ## Class Implementation
+<img width="1041" alt="Inheritance" src="https://github.com/pizzawarrior/ts-football-analysis/assets/94874182/8843dbaa-e4c4-4754-82c9-22d0e2a4207d"> \
+\
+<img width="1047" alt="Composition" src="https://github.com/pizzawarrior/ts-football-analysis/assets/94874182/9c98143d-d7c3-4780-b0c2-6db4e7770980">
