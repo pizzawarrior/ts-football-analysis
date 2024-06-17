@@ -1,5 +1,5 @@
 ## Objective
-This project is aimed at practising OOP in Typescsript, using various conventional approaches including inheritance and composition. The theme of the project is to take raw football (european soccer) data from a .csv file, parse it, format it, and perform basic analyses on it.
+This project is aimed at extending OOP in Typescsript, using various conventional approaches including inheritance and composition. The theme of the project is to take raw football (european soccer) data from a .csv file, parse it, format it, and perform basic analyses on it.
 
 ## Environment/ Frameworks
 We use Node for package management, and Jest for the testing suite.
